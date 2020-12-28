@@ -1,0 +1,12 @@
+{
+    "python.linting.pylintArgs": [
+        "--init-hook",
+        "import sys; sys.path.append('D:\\Programmering\\2.90')"
+      ],
+      "python.autoComplete.extraPaths": [
+        "D:\\Programmering\\2.90"
+    ],
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+}
