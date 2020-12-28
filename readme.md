@@ -14,4 +14,4 @@ Depends on the following addons:
 2. Whatever
 
 
-![SUT Addon Preview](addon.png)
+![SUT](addon.png)
