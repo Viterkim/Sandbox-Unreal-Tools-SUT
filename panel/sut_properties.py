@@ -8,6 +8,7 @@ from bpy.props import (
 )
 from bpy.types import PropertyGroup
 
+# After adding a property, add it as a string to the UI_PROPERTIES constant in sut_panel.py
 class SutProperties(PropertyGroup):
 
     sut_island_margin: FloatProperty(

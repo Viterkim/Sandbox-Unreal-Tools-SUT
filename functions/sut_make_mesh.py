@@ -1,9 +1,4 @@
-from bpy.context import scene
-from bpy.data import (
-    collections,
-    objects
-)
-from bpy.ops import object as obj
+import bpy
 
 from . sut_unwrap import auto_unwrap
 from . sut_utils import (
@@ -17,35 +12,35 @@ def make_single_mesh(selected_collection, context):
 
     # Go into object mode (maybe actually check stuff instead of this)
     try:
-        obj.mode_set(mode="OBJECT")
+        bpy.ops.object.mode_set(mode="OBJECT")
     except:
         pass
 
     # Deselect everything
-    obj.select_all(action='DESELECT')
+    bpy.ops.object.select_all(action='DESELECT')
 
     # Temp work
     select_children_objects_recursively(selected_collection)
 
     # Clone the selected collection
     temp_collection_name = 'SUT_COL_' + selected_collection.name
-    temp_collection = collections.new(name=temp_collection_name)
+    temp_collection = bpy.data.collections.new(name=temp_collection_name)
     copy_selected_objects(temp_collection, 0)
-    scene.collection.children.link(temp_collection)
+    bpy.context.scene.collection.children.link(temp_collection)
 
     # Deselect everything
-    obj.select_all(action='DESELECT')
+    bpy.ops.object.select_all(action='DESELECT')
 
     # Select all objects as active
     select_children_objects_recursively(temp_collection)
 
     # Merge the objects
-    obj.join()
+    bpy.ops.object.join()
     new_merged = temp_collection.all_objects[0]
 
     # Apply transform (Fixes scaling when uv unwrapping + sets object origin to world center)
     new_merged.select_set(True)
-    obj.transform_apply(
+    bpy.ops.object.transform_apply(
         location=True,
         rotation=False,
         scale=True
@@ -54,12 +49,12 @@ def make_single_mesh(selected_collection, context):
 
     # Prepare naming for the final mesh
     mesh_name = 'SM_' + selected_collection.name
-    mesh_collection = collections[sut_tool.final_col_name]
+    mesh_collection = bpy.data.collections[sut_tool.final_col_name]
 
     # Check if mesh exists, remove if it does
     try:
-        old_mesh = collections[sut_tool.final_col_name].objects[mesh_name]
-        objects.remove(old_mesh)
+        old_mesh = bpy.data.collections[sut_tool.final_col_name].objects[mesh_name]
+        bpy.data.objects.remove(old_mesh)
     except:
         pass
 
@@ -71,7 +66,7 @@ def make_single_mesh(selected_collection, context):
     temp_collection.objects.unlink(new_merged)
 
     # Delete the temp collection
-    collections.remove(temp_collection)
+    bpy.data.collections.remove(temp_collection)
 
     # Auto unwrap
     auto_unwrap(new_merged, context)

@@ -1,5 +1,8 @@
+import bpy
+
 from bpy.types import Panel
 
+# Add to this list after adding a property to SutProperties
 UI_PROPERTIES = [
     "sut_island_margin",
     "sut_angle_limit",

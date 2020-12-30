@@ -1,9 +1,11 @@
+import bpy
+import math
+
 from bpy.ops import (
     object as obj,
     mesh,
     uv
 )
-import math
 
 def auto_unwrap(input_obj, context):
     '''Uses the smart uv unwrapping tool with desired values'''
