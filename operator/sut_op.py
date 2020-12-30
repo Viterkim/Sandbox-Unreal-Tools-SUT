@@ -18,7 +18,7 @@ class Sut_OT_Operator(bpy.types.Operator):
         sut_tool = context.scene.sut_tool
 
         if not validate_collection_names(self, sut_tool):
-            return {'FINISHED WITH ERRORS'}
+            return {'CANCELLED'}
 
         # Unhide the Greybox Collection
         hide_collection_viewport(sut_tool.greybox_col_name, False)
