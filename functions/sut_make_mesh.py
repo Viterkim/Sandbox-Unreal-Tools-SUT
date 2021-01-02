@@ -1,7 +1,8 @@
 import bpy
 
-from . sut_unwrap import auto_unwrap
 from . sut_utils import (
+    auto_unwrap,
+    auto_smooth_normals,
     copy_selected_objects, 
     select_children_objects_recursively
 )
@@ -19,7 +20,7 @@ def make_single_mesh(selected_collection, context):
     # Deselect everything
     bpy.ops.object.select_all(action='DESELECT')
 
-    # Temp work
+    # Select all objects as active
     select_children_objects_recursively(selected_collection)
 
     # Clone the selected collection
@@ -33,6 +34,9 @@ def make_single_mesh(selected_collection, context):
 
     # Select all objects as active
     select_children_objects_recursively(temp_collection)
+
+    # Apply modifiers
+    bpy.ops.object.convert(target='MESH')
 
     # Merge the objects
     bpy.ops.object.join()
@@ -67,6 +71,15 @@ def make_single_mesh(selected_collection, context):
 
     # Delete the temp collection
     bpy.data.collections.remove(temp_collection)
+
+    # Auto smooth normals
+    new_merged.select_set(True)
+    bpy.context.view_layer.objects.active = new_merged
+    if sut_tool.auto_smooth_enable is True:
+        auto_smooth_normals(context)
+    else:
+        bpy.ops.object.shade_flat()
+    bpy.ops.object.select_all(action='DESELECT')
 
     # Auto unwrap
     auto_unwrap(new_merged, context)

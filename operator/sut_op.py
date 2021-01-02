@@ -5,7 +5,8 @@ from .. functions.sut_utils import (
     hide_collection_viewport,
     select_children_objects_recursively,
     use_texel_density,
-    validate_collection_names
+    validate_collection_names,
+    validate_collection_not_empty
 )
 
 class Sut_OT_Operator(bpy.types.Operator):
@@ -20,12 +21,14 @@ class Sut_OT_Operator(bpy.types.Operator):
         if not validate_collection_names(self, sut_tool):
             return {'CANCELLED'}
 
+        if not validate_collection_not_empty(self, sut_tool):
+            return {'CANCELLED'}
+
         # Unhide the Greybox Collection
         hide_collection_viewport(sut_tool.greybox_col_name, False)
         
         # Unhide the Final Collection
         hide_collection_viewport(sut_tool.final_col_name, False)
-        
         
         # Cleanup Mesh Collection
         for obj in bpy.data.collections[sut_tool.final_col_name].all_objects:
