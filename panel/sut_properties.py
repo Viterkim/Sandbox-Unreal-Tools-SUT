@@ -59,7 +59,7 @@ class SutProperties(PropertyGroup):
     )
 
     every_col_is_own_mesh: BoolProperty(
-        name="Split collection result",
+        name="Seperate Child Collection Meshes",
         description="Check if you want every collection to be their own seperate merged mesh\n(Origin will still be world origin)",
         default = False
     )
@@ -67,17 +67,29 @@ class SutProperties(PropertyGroup):
     sut_send_to_unreal: BoolProperty(
         name="Send to Unreal Engine",
         description="Avoids 2 clicks",
-        default = False
+        default = True
     )
 
     greybox_col_name: StringProperty(
         name="Greybox Coll. Name",
-        description="The greyboxing collection name",
-        default = "SUT"
+        description="The greybox collection name",
+        default = "Collection"
     )
     
     final_col_name: StringProperty(
         name="Final Coll. Name",
         description="Final collection for unreal engine, default is 'Mesh' from the UE Tools addon",
         default = "Mesh"
+    )
+
+    auto_smooth_angle: StringProperty(
+        name="Auto Smooth Angle",
+        description="Angle for auto smoothing normals on the final mesh",
+        default = "30"
+    )
+
+    auto_smooth_enable: BoolProperty(
+        name="Enable Auto Smooth By Angle",
+        description="Enable auto smoothing",
+        default = True
     )

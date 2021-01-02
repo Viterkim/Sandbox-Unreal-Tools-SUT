@@ -1,12 +1,12 @@
 bl_info = {
     "name" : "SUT - Sandbox Unreal Tools",
     "author" : "ExoMemphiz & Viter",
-    "description" : "Makes prototyping / greyboxing levels in unreal engine an easier process. Idea is to reduce 'double work' when having to place assets multiple times when you are prototyping anyway.",
+    "description" : "Faster Greyboxing / Prototyping workflow for Unreal Engine & Blender",
     "blender" : (2, 91, 0),
-    "version" : (0, 0, 1),
+    "version" : (0, 0, 2),
     "location" : "View3D",
     "warning" : "",
-    "category" : "Generic"
+    "category" : "Import-Export"
 }
 
 from . operator.sut_op import Sut_OT_Operator 

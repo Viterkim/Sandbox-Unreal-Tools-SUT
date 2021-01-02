@@ -18,12 +18,17 @@ Depends on the following addons:
 1. Follow the "Send to Unreal" steps (which includes enabling remote execution in unreal & python scripting)
   * I recommend going to options and setting "Mesh Folder(Unreal)" to: /Game/Meshes/Dev (or anything you want)
   * Go to the export settings tab, and select "Use object origin"
-2. Create Greybox colleciton defaulting to "SUT" (or change it).
+2. Create Greybox colleciton defaulting to "Collection" (or change it).
 3. Do the greyboxing / level designing you need to do. Everything gets merged into a single mesh (unless you check Split collection result).
 4. Tick "Send to Unreal" and press SUT
-5. In Unreal drag the Meshes/Dev/SM_SUT into your scene, and click the yellow little arrow in the transform panel, to reset it to 0,0,0 coordinates.
-6. Put on some proper dev texture (cube material or w.e)
-7. Go into Blender -> Change something -> Press SUT -> Instant Changes
+5. In Unreal go top left -> Edit -> Project Settings -> Search for "Default Shape Complexity" and select "Use Complex Collision as Simple". 
+  * When you are done greyboxing this should be turned back OFF
+6. In Unreal drag the Meshes/Dev/SM_COLLECTION into your scene, and click the yellow little arrow in the transform panel, to reset it to 0,0,0 coordinates.
+7. Put on some proper dev texture (cube material or w.e)
+
+
+Done now you can:
+Go into Blender -> Change something -> Press SUT -> Instant Changes in Unreal Engine
 
 
 ![SUT](assets/addon.png)

@@ -10,6 +10,8 @@ UI_PROPERTIES = [
     "sut_texel_density",
     "greybox_col_name",
     "final_col_name",
+    "auto_smooth_angle",
+    "auto_smooth_enable",
     "every_col_is_own_mesh",
     "sut_send_to_unreal"
 ]
