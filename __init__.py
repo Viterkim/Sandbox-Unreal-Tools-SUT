@@ -2,8 +2,8 @@ bl_info = {
     "name" : "SUT - Sandbox Unreal Tools",
     "author" : "ExoMemphiz & Viter",
     "description" : "Faster Greyboxing / Prototyping workflow for Unreal Engine & Blender",
-    "blender" : (2, 91, 0),
-    "version" : (0, 0, 2),
+    "blender" : (3, 1, 0),
+    "version" : (0, 1, 0),
     "location" : "View3D",
     "warning" : "",
     "category" : "Import-Export"
@@ -14,7 +14,7 @@ from . panel.sut_properties import SutProperties
 from . panel.sut_panel import Sut_PT_Panel
 
 from bpy.utils import (
-    register_class, 
+    register_class,
     unregister_class
 )
 from bpy.props import PointerProperty
