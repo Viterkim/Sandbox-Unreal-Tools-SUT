@@ -15,24 +15,18 @@ Depends on the following addons:
 2. [Send To Unreal Github](https://github.com/EpicGames/BlenderTools) (You need to follow this: https://www.unrealengine.com/en-US/blog/download-our-new-blender-addons)
 
 # Setup
-1. Follow the "Send to Unreal" steps (which includes enabling remote execution in unreal & python scripting)
-  * I recommend going to options and setting "Mesh Folder(Unreal)" to: /Game/Meshes/Dev (or anything you want)
-  * Go to the export settings tab, and select "Use object origin"
-2. Create Greybox colleciton defaulting to "Collection" (or change it).
-3. Do the greyboxing / level designing you need to do. Everything gets merged into a single mesh (unless you check Split collection result).
-4. Tick "Send to Unreal" and press SUT
-5. In Unreal go top left -> Edit -> Project Settings -> Search for "Default Shape Complexity" and select "Use Complex Collision as Simple". 
-  * When you are done greyboxing this should be turned back OFF
-6. In Unreal drag the Meshes/Dev/SM_COLLECTION into your scene, and click the yellow little arrow in the transform panel, to reset it to 0,0,0 coordinates.
-7. Put on some proper dev texture (cube material or w.e)
-
+1. Follow the "Send to Unreal" steps:
+  * In unreal:
+    - Pugins -> "Enable Python Editor Script Plugin"
+    - Project Settings -> "Enable Remote Execution"
+    - "Default Shape Complexity" and select "Use Complex Collision as Simple". 
+  * In Blender (Pipeline -> Export -> Seting Dialog): 
+    - Set "Mesh Folder(Unreal)" to: /Game/Meshes/Dev (or anything you want)
+    - Export -> FXB Export Settings -> Smoothing: Face
+2. In Unreal drag the Meshes/Dev/SM_COLLECTION into your scene, and click the yellow little arrow in the transform panel, to reset it to 0,0,0 coordinates.
+3. Put on some proper dev texture, you can use 1 color per grouped collection.
 
 Done now you can:
 Go into Blender -> Change something -> Press SUT -> Instant Changes in Unreal Engine
 
-
 ![SUT](assets/addon.png)
-
-# Future Features
-1. Landscape Synchronization (Rough) (Landscape in unreal -> synchronize to blender and greybox back and forth)
-2. Instance Dupliactes in blender to world position in unreal (Make your scene in blender with a modular kit)

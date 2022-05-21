@@ -11,11 +11,11 @@ def make_single_mesh(selected_collection, context):
     # For scene / own global variables
     sut_tool = context.scene.sut_tool
 
-    # Go into object mode (maybe actually check stuff instead of this)
-    try:
-        bpy.ops.object.mode_set(mode="OBJECT")
-    except:
-        pass
+    # Avoid "Operator bpy.ops.object.mode_set.poll() Context missing active object"
+    context.view_layer.objects.active = selected_collection.all_objects[0]
+
+    # Go into object mode
+    bpy.ops.object.mode_set(mode='OBJECT')
 
     # Deselect everything
     bpy.ops.object.select_all(action='DESELECT')

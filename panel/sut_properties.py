@@ -18,7 +18,7 @@ class SutProperties(PropertyGroup):
         max=5,
         step=0.01,
         precision=3,
-        default=0.005
+        default=0.02
     )
 
     sut_angle_limit: FloatProperty(
@@ -61,7 +61,7 @@ class SutProperties(PropertyGroup):
     every_col_is_own_mesh: BoolProperty(
         name="Seperate Child Collection Meshes",
         description="Check if you want every collection to be their own seperate merged mesh\n(Origin will still be world origin)",
-        default = False
+        default = True
     )
 
     sut_send_to_unreal: BoolProperty(
@@ -78,8 +78,8 @@ class SutProperties(PropertyGroup):
     
     final_col_name: StringProperty(
         name="Final Coll. Name",
-        description="Final collection for unreal engine, default is 'Mesh' from the UE Tools addon",
-        default = "Mesh"
+        description="Final collection for unreal engine.",
+        default = "Export" # Seems to be hardcoded now, so disabled this from the UI
     )
 
     auto_smooth_angle: StringProperty(

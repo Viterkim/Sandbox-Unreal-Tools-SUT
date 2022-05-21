@@ -36,11 +36,13 @@ class Sut_OT_Operator(bpy.types.Operator):
 
         # Every collection gets merged into it's own unique mesh (or all collections is a single big mesh)
         greybox_collection = bpy.data.collections[sut_tool.greybox_col_name]
-        if sut_tool.every_col_is_own_mesh is True:
+        greybox_col_has_child_col = len(greybox_collection.children) > 0 # Avoid bug + we don't support deeply nested collections
+        if sut_tool.every_col_is_own_mesh is True and greybox_col_has_child_col is True:
             # Get final collection, loop over every child collection and run make_single_mesh
             for col in greybox_collection.children:
-                make_single_mesh(col, context)
-        else:
+                if len(col.all_objects) > 0:
+                    make_single_mesh(col, context)
+        elif len(greybox_collection.all_objects) > 0:
             make_single_mesh(greybox_collection, context)
 
         # For every single object in the final collection, set the texel density

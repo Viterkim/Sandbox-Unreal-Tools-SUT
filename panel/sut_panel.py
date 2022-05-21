@@ -4,12 +4,12 @@ from bpy.types import Panel
 
 # Add to this list after adding a property to SutProperties
 UI_PROPERTIES = [
-    "sut_island_margin",
-    "sut_angle_limit",
+    # "sut_island_margin", # Disabling to cleanup UI
+    # "sut_angle_limit", # Disabling to cleanup UI
     "sut_texture_size",
     "sut_texel_density",
     "greybox_col_name",
-    "final_col_name",
+    # "final_col_name", # Seems to be hardcoded now, so disabled this from the UI
     "auto_smooth_angle",
     "auto_smooth_enable",
     "every_col_is_own_mesh",
