@@ -2,8 +2,8 @@ bl_info = {
     "name" : "SUT - Sandbox Unreal Tools",
     "author" : "ExoMemphiz & Viter",
     "description" : "Faster Greyboxing / Prototyping workflow for Unreal Engine & Blender",
-    "blender" : (3, 1, 0),
-    "version" : (0, 1, 0),
+    "blender" : (4, 3, 0),
+    "version" : (0, 2, 0),
     "location" : "View3D",
     "warning" : "",
     "category" : "Import-Export"

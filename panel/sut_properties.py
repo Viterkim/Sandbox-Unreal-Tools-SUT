@@ -50,12 +50,12 @@ class SutProperties(PropertyGroup):
         name="Texture Size",
         description="Set texture size in the Texel Density addon",
         items=[
-            ("0", "512px", ""),
-            ("1", "1024px", ""),
-            ("2", "2048px", ""),
-            ("3", "4096px", "")
+            ("512", "512", ""),
+            ("1024", "1024", ""),
+            ("2048", "2048", ""),
+            ("4096", "4096", "")
         ],
-        default="2",
+        default="2048",
     )
 
     every_col_is_own_mesh: BoolProperty(

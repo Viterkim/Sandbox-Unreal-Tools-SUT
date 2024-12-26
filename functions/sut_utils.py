@@ -98,5 +98,5 @@ def auto_smooth_normals(context):
     '''Enables auto smoothing of normals by the angle given'''
     bpy.ops.object.shade_smooth()
     radians = math.radians(float(context.scene.sut_tool.auto_smooth_angle))
-    bpy.context.object.data.auto_smooth_angle = radians
-    bpy.context.object.data.use_auto_smooth = True
+    bpy.ops.object.shade_auto_smooth()
+    bpy.context.object.modifiers["Smooth by Angle"]["Input_1"] = radians
